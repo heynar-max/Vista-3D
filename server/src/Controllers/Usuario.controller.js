@@ -36,5 +36,22 @@ UsuarioCtrl.crear = async(req , res) => {
         })
     }
             }
+    
+UsuarioCtrl.eliminar = async (req, res) => {
+
+    const id = req.params.id
+    await Usuario.findByIdAndRemove({_id:id})
+    res.json({
+        mensaje:'Usuario eliminado'
+    })
+}
+UsuarioCtrl.editar = async (req, res) => {
+
+    const id = req.params.id
+    await Usuario.findByIdAndUpdate({_id:id},req.body)
+    res.json({
+        mensaje:'Usuario editado'
+    })
+}
 
 module.exports = UsuarioCtrl
